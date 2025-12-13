@@ -1,0 +1,16 @@
+1765559587557:hello
+1765559629341:exit
+1765559658796:hello
+1765563975256:help
+1765563990138:help user-create
+1765564036770:user-create -u vicky -e vicky@gmail.com
+1765564164861:user-update -id 13 -u jane doe -e janedoe@gmail.com
+1765564197938:user-update --userId 13 -u jane doe -e janedoe@gmail.com
+1765564286583:user-create -u john doe -e johndoe@gmail.com
+1765566026228:user-create --username harini --email harini@gmail.com
+1765566076951:user-delete --userId 14
+1765566133458:user-update --userId 13 --username temp --email temp@gmail.com
+1765566155942:user-get --userId 13
+1765568751688:help
+1765568793583:user-create -u vicky -e vicky@gmail.com
+1765568912403:exit
