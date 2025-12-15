@@ -1,15 +1,15 @@
 package com.vicky.CLNotesV1.DTO.RequestDTO;
 
-public class UserRequestDTO {
+public class UserLoginRequestDTO {
     private String userName;
     private String email;
 
-    public UserRequestDTO(String userName, String email) {
+    public UserLoginRequestDTO(String userName, String email) {
         this.userName = userName;
         this.email = email;
     }
 
-    public UserRequestDTO() {
+    public UserLoginRequestDTO() {
     }
 
     public String getEmail() {

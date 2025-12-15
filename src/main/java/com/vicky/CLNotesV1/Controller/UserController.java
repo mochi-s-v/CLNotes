@@ -1,6 +1,7 @@
 package com.vicky.CLNotesV1.Controller;
 
-import com.vicky.CLNotesV1.DTO.RequestDTO.UserRequestDTO;
+import com.vicky.CLNotesV1.DTO.RequestDTO.UserLoginRequestDTO;
+import com.vicky.CLNotesV1.DTO.RequestDTO.UserRegisterRequestDTO;
 import com.vicky.CLNotesV1.DTO.ResponseDTO.UserResponseDTO;
 import com.vicky.CLNotesV1.Service.UserService;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO userRequestDTO) {
-        return new ResponseEntity<>(userService.createUser(userRequestDTO), HttpStatus.CREATED);
+    @PostMapping("/register")
+    public ResponseEntity<UserResponseDTO> create(@RequestBody UserRegisterRequestDTO userRegisterRequestDTO) {
+        return new ResponseEntity<>(userService.createUser(userRegisterRequestDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<UserResponseDTO> update(@PathVariable long userId, @RequestBody UserRequestDTO userRequestDTO) {
-        return new ResponseEntity<>(userService.updateUser(userId, userRequestDTO), HttpStatus.CREATED);
+    public ResponseEntity<UserResponseDTO> update(@PathVariable long userId, @RequestBody UserLoginRequestDTO userLoginRequestDTO) {
+        return new ResponseEntity<>(userService.updateUser(userId, userLoginRequestDTO), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{userId}")
@@ -34,5 +35,10 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<UserResponseDTO> getUserById(@PathVariable long userId) {
         return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/health")
+    public String health() {
+        return "Healthy";
     }
 }

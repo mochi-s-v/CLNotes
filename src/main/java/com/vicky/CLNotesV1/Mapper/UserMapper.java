@@ -1,6 +1,7 @@
 package com.vicky.CLNotesV1.Mapper;
 
-import com.vicky.CLNotesV1.DTO.RequestDTO.UserRequestDTO;
+import com.vicky.CLNotesV1.DTO.RequestDTO.UserLoginRequestDTO;
+import com.vicky.CLNotesV1.DTO.RequestDTO.UserRegisterRequestDTO;
 import com.vicky.CLNotesV1.DTO.ResponseDTO.UserResponseDTO;
 import com.vicky.CLNotesV1.Entity.UserEntity;
 
@@ -10,14 +11,27 @@ public class UserMapper {
     }
 
     //DTO -> Entity
-    public static UserEntity toEntity(UserRequestDTO userRequestDTO) {
-        if (userRequestDTO == null) {
+    public static UserEntity RegisterToEntity(UserRegisterRequestDTO userRegisterRequestDTO) {
+        if (userRegisterRequestDTO == null) {
             return null;
         }
 
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserName(userRequestDTO.getUserName());
-        userEntity.setEmail(userRequestDTO.getEmail());
+        userEntity.setUsername(userRegisterRequestDTO.getUsername());
+        userEntity.setEmail(userRegisterRequestDTO.getEmail());
+        userEntity.setPassword(userRegisterRequestDTO.getPassword());
+        return userEntity;
+    }
+
+
+    public static UserEntity LoginToEntity(UserLoginRequestDTO userLoginRequestDTO) {
+        if (userLoginRequestDTO == null) {
+            return null;
+        }
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUsername(userLoginRequestDTO.getUserName());
+        userEntity.setEmail(userLoginRequestDTO.getEmail());
         return userEntity;
     }
 
@@ -28,7 +42,7 @@ public class UserMapper {
         }
         return new UserResponseDTO(
                 userEntity.getUserId(),
-                userEntity.getUserName(),
+                userEntity.getUsername(),
                 userEntity.getEmail(),
                 userEntity.getNotesEntityList()
                         .stream()
