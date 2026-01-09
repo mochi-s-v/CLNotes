@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     UserService(UserRepo userRepo,
                 PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
+        this.userRepo = userRepo; 
         this.passwordEncoder = passwordEncoder;
     }
 

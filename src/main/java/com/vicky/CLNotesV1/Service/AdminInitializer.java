@@ -15,7 +15,7 @@ public class AdminInitializer {
                                          PasswordEncoder passwordEncoder) {
         return args -> {
             String adminName = "admin";
-            Boolean adminExists = userRepo.findByUsername(adminName).isPresent();
+            boolean adminExists = userRepo.findByUsername(adminName).isPresent();
             if (!adminExists) {
                 UserEntity user = new UserEntity();
                 user.setUsername(adminName);
