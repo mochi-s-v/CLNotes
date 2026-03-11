@@ -6,9 +6,6 @@ import com.vicky.CLNotesV1.Entity.UserEntity;
 
 public class UserMapper {
 
-    private UserMapper() {
-    }
-
     //DTO -> Entity
     public static UserEntity toEntity(UserRequestDTO userRequestDTO) {
         if (userRequestDTO == null) {
@@ -16,8 +13,9 @@ public class UserMapper {
         }
 
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserName(userRequestDTO.getUserName());
+        userEntity.setUsername(userRequestDTO.getUsername());
         userEntity.setEmail(userRequestDTO.getEmail());
+        userEntity.setPassword(userRequestDTO.getPassword());
         return userEntity;
     }
 
@@ -28,7 +26,7 @@ public class UserMapper {
         }
         return new UserResponseDTO(
                 userEntity.getUserId(),
-                userEntity.getUserName(),
+                userEntity.getUsername(),
                 userEntity.getEmail(),
                 userEntity.getNotesEntityList()
                         .stream()

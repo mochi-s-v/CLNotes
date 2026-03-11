@@ -1,12 +1,14 @@
 package com.vicky.CLNotesV1.DTO.RequestDTO;
 
 public class UserRequestDTO {
-    private String userName;
+    private String username;
     private String email;
+    private String password;
 
-    public UserRequestDTO(String userName, String email) {
-        this.userName = userName;
+    public UserRequestDTO(String userName, String email, String password) {
+        this.username = userName;
         this.email = email;
+        this.password = password;
     }
 
     public UserRequestDTO() {
@@ -20,12 +22,19 @@ public class UserRequestDTO {
         this.email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

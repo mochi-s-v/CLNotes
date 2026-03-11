@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    image: clnotes-image
+    container_name: clnotes-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/clnotesdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 1234
+    ports:
+      - "8090:8090"
+    depends_on:
+      - db
+    networks:
+      - clnotes-network
+
+  db:
+    image: postgres:latest
+    container_name: clnotes-postgres-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: clnotesdb
+    ports:
+      - "5400:5432"
+    networks:
+      - clnotes-network
+    volumes:
+      - clnotes-volume:/var/lib/postgresql
+
+networks:
+  clnotes-network:
+
+volumes:
+  clnotes-volume:

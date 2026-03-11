@@ -15,19 +15,19 @@ import java.util.List;
 public class NoteController {
 
     private final NoteService noteService;
+
     NoteController(NoteService noteService) {
         this.noteService = noteService;
     }
 
-    @PostMapping
-    public ResponseEntity<NoteResponseDTO> createNote(@RequestParam long userId,
-                                                      @RequestBody NoteRequestDTO noteRequestDTO) {
-        return new ResponseEntity<>(noteService.create(userId, noteRequestDTO), HttpStatus.CREATED);
+    @PostMapping("/create")
+    public ResponseEntity<NoteResponseDTO> createNote(@RequestBody NoteRequestDTO noteRequestDTO) {
+        return new ResponseEntity<>(noteService.create(noteRequestDTO), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{noteId}")
-    public ResponseEntity<NoteResponseDTO> getNoteById(@PathVariable long noteId) {
-        return new ResponseEntity<>(noteService.getNoteById(noteId), HttpStatus.OK);
+    @GetMapping("/all-notes")
+    public ResponseEntity<List<NoteResponseDTO>> getAllNotes() {
+        return new ResponseEntity<>(noteService.getAllNotes(), HttpStatus.OK);
     }
 
     @PutMapping("/{noteId}")
@@ -43,7 +43,7 @@ public class NoteController {
 
     @DeleteMapping("/{noteId}/deleteTag")
     public ResponseEntity<NoteResponseDTO> deleteTag(@PathVariable long noteId,
-                          @RequestParam String tagName) {
+                                                     @RequestParam String tagName) {
         return new ResponseEntity<>(noteService.deleteTag(noteId, tagName), HttpStatus.OK);
     }
 
@@ -55,11 +55,9 @@ public class NoteController {
 
     @GetMapping
     public ResponseEntity<List<NoteResponseDTO>> filterNotes(
-            @RequestParam long userId,
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String content,
-            @RequestParam(required = false) List<String> tag
-    ) {
-        return new ResponseEntity<>(noteService.filter(userId, title, content, tag), HttpStatus.OK);
+            @RequestParam(required = false) List<String> tag) {
+        return new ResponseEntity<>(noteService.filter(title, content, tag), HttpStatus.OK);
     }
 }

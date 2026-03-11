@@ -2,6 +2,7 @@ package com.vicky.CLNotesV1.Service;
 
 import com.vicky.CLNotesV1.DTO.ResponseDTO.NoteSummaryDTO;
 import com.vicky.CLNotesV1.DTO.ResponseDTO.TagResponseDTO;
+import com.vicky.CLNotesV1.Entity.NoteEntity;
 import com.vicky.CLNotesV1.Entity.TagEntity;
 import com.vicky.CLNotesV1.Mapper.NoteMapper;
 import com.vicky.CLNotesV1.Mapper.NoteSummaryMapper;
