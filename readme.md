@@ -56,27 +56,31 @@ MySQL Database
 # Running the Application
 
 Run with Docker Compose
+
 docker-compose up --build
 
 This will start:
-Spring Boot application
-MySQL database
+
+- Spring Boot application
+- MySQL database
 
 ---
 
 # Security
 
 CLNotes includes several security mechanisms:
-JWT-based authentication
-Stateless session management
-Protected endpoints using Spring Security
-User-level authorization
-IDOR prevention by validating note ownership before access
+
+- JWT-based authentication
+- Stateless session management
+- Protected endpoints using Spring Security
+- User-level authorization
+- IDOR prevention by validating note ownership before access
 
 ---
 
 # Author
 
 Vicky
+
 Backend Developer
 
