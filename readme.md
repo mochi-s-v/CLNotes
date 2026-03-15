@@ -57,7 +57,7 @@ MySQL Database
 
 Run with Docker Compose
 
-docker-compose up --build
+docker compose -f clnotes-compose.yaml up --build
 
 This will start:
 
