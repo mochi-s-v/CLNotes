@@ -62,7 +62,7 @@ docker compose -f clnotes-compose.yaml up --build
 This will start:
 
 - Spring Boot application
-- MySQL database
+- postgres database
 
 ---
 
